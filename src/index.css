@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --bg-color: #090909;
+    --accent: #A89BBE;
+  }
+  body {
+    @apply bg-background text-textPrimary antialiased overflow-x-hidden;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-background/50 backdrop-blur-xl border border-glassBorder rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  .glass-card {
+    @apply bg-secondaryBg backdrop-blur-md border border-glassBorder rounded-2xl transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply border-lavender/40 bg-darkSurface shadow-[0_0_40px_rgba(168,155,190,0.1)];
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-lavender via-beige to-lavender;
+  }
+  
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(216, 195, 168, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(216, 195, 168, 0.02) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+::-webkit-scrollbar-thumb {
+  background: #161616;
+  border-radius: 5px;
+  border: 2px solid #090909;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
+
+/* Mouse Follower */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  background-color: #D8C3A8;
+}
+
+.cursor-dot-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9998;
+  border-color: #A89BBE;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
